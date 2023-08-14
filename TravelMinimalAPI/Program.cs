@@ -63,3 +63,4 @@ using (var scope = app.Services.GetService<IServiceScopeFactory>()?.CreateScope(
     context?.Database.Migrate();
 }
 app.Run();
+// test
