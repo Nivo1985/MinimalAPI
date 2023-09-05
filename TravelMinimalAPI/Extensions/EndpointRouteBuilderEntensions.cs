@@ -10,7 +10,7 @@ public static class EndpointRouteBuilderEntensions
 {
     public static void RegisterEndpoints(this IEndpointRouteBuilder endpointRouteBuilder)
     {
-        var destinationsEndpoints = endpointRouteBuilder.MapGroup("/destinations").RequireAuthorization();
+        var destinationsEndpoints = endpointRouteBuilder.MapGroup("/destinations");//.RequireAuthorization();
         var destinationsWithIdEndpoints = destinationsEndpoints.MapGroup("/{destinationId:int}");
         var destinationsWithNameEndpoints = destinationsEndpoints.MapGroup("/{destinationName}");
         var activitiesEndpoints = destinationsWithIdEndpoints.MapGroup("/activities");

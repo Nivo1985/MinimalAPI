@@ -1,10 +1,16 @@
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using TravelMinimalAPI.DbContexts;
 using TravelMinimalAPI.Extensions;
+using TravelMinimalAPI.HealthChecks;
 using TravelMinimalAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHealthChecks()
+    .AddCheck<DbHealthCheck>("DbHealthCheck");
 
 builder.Services.AddDbContext<TravelDbContext>(x=> x.UseSqlite(
         builder.Configuration["ConnectionStrings:DishesDBConnectionString"]));
@@ -49,6 +55,10 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseHttpsRedirection();
 
+app.MapHealthChecks("/_health", new HealthCheckOptions()
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 app.UseSwagger();
 app.UseSwaggerUI();
 
