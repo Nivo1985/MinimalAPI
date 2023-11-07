@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using TravelMinimalAPI.DbContexts;
 
 namespace TravelMinimalAPI.HealthChecks;
@@ -12,21 +13,20 @@ public class DbHealthCheck: IHealthCheck
         _travelDbContext = travelDbContext;
     }
     
-    public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context
-        , CancellationToken cancellationToken = new CancellationToken())
+    public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
     {
         try
         {
-            _ = _travelDbContext.Destinations.ToList();
-            _ = _travelDbContext.Activities.ToList();
+            var destinationsTask = _travelDbContext.Destinations.ToListAsync(cancellationToken);
+            var activitiesTask = _travelDbContext.Activities.ToListAsync(cancellationToken);
 
-            //throw new Exception("FUCK UP EXCEPTION"); 
-            
-            return Task.FromResult(HealthCheckResult.Healthy());
+            await Task.WhenAll(destinationsTask, activitiesTask);
+
+            return HealthCheckResult.Healthy();
         }
         catch (Exception e)
         {
-            return Task.FromResult(HealthCheckResult.Unhealthy(null, e));
+            return HealthCheckResult.Unhealthy(null, e);
         }
     }
 }
