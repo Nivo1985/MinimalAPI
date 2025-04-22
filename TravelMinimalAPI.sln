@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelMinimalAPI", "TravelMinimalAPI\TravelMinimalAPI.csproj", "{9543E5CD-07B8-4B68-AE7A-CE664BB000AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastEndPointsDemo", "FastEndPointsDemo\FastEndPointsDemo.csproj", "{07030CE3-42E1-4BE9-BAE8-E33A68F7301F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{9543E5CD-07B8-4B68-AE7A-CE664BB000AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9543E5CD-07B8-4B68-AE7A-CE664BB000AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9543E5CD-07B8-4B68-AE7A-CE664BB000AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07030CE3-42E1-4BE9-BAE8-E33A68F7301F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07030CE3-42E1-4BE9-BAE8-E33A68F7301F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07030CE3-42E1-4BE9-BAE8-E33A68F7301F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07030CE3-42E1-4BE9-BAE8-E33A68F7301F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
